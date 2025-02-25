@@ -67,7 +67,7 @@
   </style>
 </head>
 <body>
-   <div id="header">Indicators Portal Demo Version 4</div>
+   <div id="header">Indicators Portal Demo Version 5</div>
   <div id="container">
     <nav id="sidebarMenu">
       <ul>
@@ -134,12 +134,12 @@
         e.preventDefault(); // Prevent default link behavior
 
         let pageUrl = $(this).data("file"); // Get the file name from data-file
-        let geoParam = $(this).data("geo"); // Get the geo parameter from data-geo
+       geoValue = $(this).data("geo"); // Get the geo parameter from data-geo
 
         if (!pageUrl) return; // Exit if no file is defined
 
         // Construct full URL with geo parameter if it exists
-        let fullUrl = pageUrl + (geoParam ? "?geo=" + geoParam : "");
+        let fullUrl = pageUrl + ".html";
 
         $("#content").load(fullUrl, function(response, status, xhr) {
             if (status == "error") {
@@ -147,18 +147,6 @@
                 return;
             }
 
-            // Inject script to ensure geo parameter is displayed
-            let scriptTag = document.createElement("script");
-            scriptTag.innerHTML = `
-                $(document).ready(function() {
-                    let urlParams = new URLSearchParams(window.location.search);
-                    let geoValue = urlParams.get("geo");
-                    if (geoValue) {
-                        $("#geo-display").text("Geo Value: " + geoValue);
-                    }
-                });
-            `;
-            document.getElementById("content").appendChild(scriptTag);
         });
     });
 });
