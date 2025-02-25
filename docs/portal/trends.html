@@ -8,16 +8,11 @@
 </head>
 <body>
 Population Trend Data is for <span id='geo-display'></span>
+    my special note: <span id='myNote'></span>
 <script>
 $(document).ready(function() {
-    let urlParams = new URLSearchParams(window.location.search);
-    let geoValue = urlParams.get("geo"); // Extract 'geo' parameter
-
-    if (geoValue) {
         $("#geo-display").text("Geo Value: " + geoValue);
-    } else {
-        $("#geo-display").text("No Geo Parameter Found.");
-    }
+   
 });
 </script>
 
