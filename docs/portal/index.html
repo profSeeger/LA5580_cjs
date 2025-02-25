@@ -134,8 +134,15 @@
         var filePath = filename + ".html?geo="+geoData; // Construct the file path
         console.log("Opening file:", filePath);
 		
+         let params = window.location.search; // Get current URL parameters
+
 		//$("#mainContent").load(filePath, function(response, status, xhr) 
-        $("#mainContent").load("pop.html?geo=Iowa"); 
+        //$("#mainContent").load("pop.html?geo=Iowa"); 
+        
+       
+        $("#mainContent").load(filePath + params); // Load the page with parameters
+        
+        
         status = "gg";
             if (status === "error") {
                 $("#mainContent").html(filePath + "<p>Sorry, the page could not be loaded.</p>");
