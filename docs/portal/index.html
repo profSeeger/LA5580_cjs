@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indicators Portal</title>
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+	  
+	#header {
+            width: 100%;
+            background-color: #003D4C;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.5em;
+        }
+    
+    #container {
+      display: flex;
+      flex: 1;
+    }
+    
+    #sidebarMenu {
+      width: 250px;
+      background: #f4f4f4;
+      padding: 5px;
+    }
+    
+    #sidebarMenu ul {
+      list-style-type: none;
+      padding: 3;
+    }
+    
+    #sidebarMenu a {
+      text-decoration: underline;
+      color: #333;
+      display: block;
+      padding: 5px 0;
+    }
+    
+    #sidebarMenu a:hover {
+      text-decoration: underline;
+    }
+    
+    #mainContent {
+      flex: 1;
+      padding: 20px;
+    }
+    
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+   <div id="header">Indicators Portal Demo</div>
+  <div id="container">
+    <nav id="sidebarMenu">
+      <ul>
+        <li>Population & Demographics
+          <ul>
+			    <li><a href="#" data-file="pop">Page 1</a></li>
+            <li><a href="#" id="currentPopulationLink">Current Population</a></li>
+            <li><a href="#">Population Pyramids</a></li>
+            <li><a href="#">Population Trends</a></li>
+          </ul>
+        </li>
+        <li>Languages
+          <ul>
+            <li><a href="#">Adult</a></li>
+            <li><a href="#">School</a></li>
+			  <li><a href="#" onclick="javascript:$('#mainContent').load('newpage1.html');">demo</a></li>
+          </ul>
+        </li>
+        <li>Age
+          <ul>
+            <li><a href="#">Population Pyramids</a></li>
+            <li><a href="#">Trends</a></li>
+          </ul>
+        </li>
+        <li>Households & Families
+          <ul>
+            <li>Households
+              <ul>
+                <li><a href="#">Family Households</a></li>
+                <li><a href="#">Nonfamily Households</a></li>
+                <li><a href="#">Cohabitating Couple Households</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Births & Deaths</a></li>
+            <li><a href="#">Natural</a></li>
+            <li><a href="#">Something else</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    
+    <div id="mainContent">
+      <h2>Welcome</h2>
+      <p>Select an option from the menu.</p>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; 2025 Indicators Portal
+  </footer>
+  
+  <script>
+
+	 $(document).ready(function() {
+		 console.clear();
+    $("#sidebarMenu a").on("click", function(e) {
+        e.preventDefault(); // Prevent the default link behavior
+
+        var filePart = $(this).data("file"); // Get the value from data-file attribute
+        loadPage(filePart);
+    });
+
+    function loadPage(filename) {
+        var filePath = filename + ".html"; // Construct the file path
+        console.log("Opening file:", filePath);
+		
+		filePath = "pop.html"
+		$("#mainContent").load(filePath, function(response, status, xhr) 
+                               
+                               {
+            if (status === "error") {
+                $("#mainContent").html(filePath + "<p>Sorry, the page could not be loaded.</p>");
+            }
+		});
+
+        // Example: Open in a new tab or load dynamically
+        // window.open(filePath, "_blank");
+        // OR load content dynamically
+        // $("#content").load(filePath);
+    }
+});
+ 
+	  
+
+	  
+	  
+	  
+  </script>
+  
+</body>
+</html>
