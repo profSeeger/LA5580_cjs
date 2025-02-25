@@ -7,16 +7,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-Population Data <span id='GeoSpan'></span>
+Population Data <span id='geo-display'></span>
 <script>
-    $(document).ready(function() {
-        let url = new URL(document.location.href);
-        let params = new URLSearchParams(url.search);
-        let geoValue = params.get('geo');
+$(document).ready(function() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let geoValue = urlParams.get("geo"); // Extract 'geo' parameter
 
-        console.log(geoValue); // Should output "Iowa"
-        $("body").append(`<p>Geo Value: ${geoValue}</p>`);
-    });
+    if (geoValue) {
+        $("#geo-display").text("Geo Value: " + geoValue);
+    } else {
+        $("#geo-display").text("No Geo Parameter Found.");
+    }
+});
 </script>
 
 </body>
