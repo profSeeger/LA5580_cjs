@@ -7,22 +7,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-Pyramid data  <span id='GeoSpan'></span>
+Pyramid data  <span id='geo-display'></span>
 <script>
-    $(document).ready(function() {
-        // Get the URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // Get the value of the 'geo' parameter
-        const geoValue = urlParams.get('geo');
+$(document).ready(function() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let geoValue = urlParams.get("geo"); // Extract 'geo' parameter
 
-        // Log it to the console or use it in your code
-        console.log(geoValue); // Outputs: Iowa
-        $('#GeoSpan').text("Geo: "+geoValue)
-
-        // You can also display it on the page
-        $('body').append(`<p>Geo Value: ${geoValue}</p>`);
-    });
+    if (geoValue) {
+        $("#geo-display").text("Geo Value: " + geoValue);
+    } else {
+        $("#geo-display").text("No Geo Parameter Found.");
+    }
+});
 </script>
 
 </body>
