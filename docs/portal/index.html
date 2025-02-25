@@ -107,7 +107,7 @@
       </ul>
     </nav>
     
-    <div id="mainContent">
+    <div id="content">
       <h2>Welcome</h2>
       <p>Select an option from the left menu.</p>
     </div>
@@ -119,47 +119,34 @@
   
   <script>
 
-	 $(document).ready(function() {
-		 console.clear();
+
+        $(document).ready(function() {
     $("#sidebarMenu a").on("click", function(e) {
-        e.preventDefault(); // Prevent the default link behavior
+        e.preventDefault(); // Prevent default link behavior
 
-        var filePart = $(this).data("file"); // Get the filename
-        var geoPart = $(this).data("geo"); // Get the geographic location
-        
-        loadPage(filePart, geoPart);
+        let pageUrl = $(this).data("file"); // Get the file name from data-file
+        let geoParam = $(this).data("geo"); // Get the geo parameter from data-geo
+
+        if (!pageUrl) return; // Exit if no file is defined
+
+        // Construct full URL with geo parameter if it exists
+        let fullUrl = pageUrl + (geoParam ? "?geo=" + geoParam : "");
+
+        $("#content").load(fullUrl, function() {
+            // Inject script to ensure geo parameter is displayed
+            let scriptTag = document.createElement("script");
+            scriptTag.innerHTML = `
+                let urlParams = new URLSearchParams(window.location.search);
+                let geoValue = urlParams.get("geo");
+                if (geoValue) {
+                    document.getElementById("geo-display").innerText = "Geo Value: " + geoValue;
+                }
+            `;
+            document.getElementById("content").appendChild(scriptTag);
+        });
     });
-
-    function loadPage(filename, geoData) {
-        var filePath = filename + ".html?geo="+geoData; // Construct the file path
-        console.log("Opening file:", filePath);
-		
-         let params = window.location.search; // Get current URL parameters
-
-		//$("#mainContent").load(filePath, function(response, status, xhr) 
-        //$("#mainContent").load("pop.html?geo=Iowa"); 
-        
-       
-        $("#mainContent").load(filePath + params); // Load the page with parameters
-        
-        
-        status = "gg";
-            if (status === "error") {
-                $("#mainContent").html(filePath + "<p>Sorry, the page could not be loaded.</p>");
-            }
-		
-
-        // Example: Open in a new tab or load dynamically
-        // window.open(filePath, "_blank");
-        // OR load content dynamically
-        // $("#content").load(filePath);
-    }
 });
  
-	  
-
-	  
-	  
 	  
   </script>
   
