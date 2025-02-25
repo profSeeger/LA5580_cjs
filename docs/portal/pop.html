@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get URL Parameters</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
+<html>
+  <head>
+<meta name="description" content="Tableau API - Basic Embed and parameter change">
+<meta name="Tableau Embedd Test" content="">
+    <title>Change Parameters</title>
+
+  <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.js"></script>
+  
+<script>
+
+  async function setVizParam() {
+    let viz = document.getElementById("tableauViz");
+	  //let viz2 = document.getElementById("tableauViz2");
+    try {
+        //let newBase = document.getElementById("newSalary").value;
+        let newBase = "Webster";
+        await viz.workbook.changeParameterValueAsync("CountyP", newBase); 
+		//await viz2.workbook.changeParameterValueAsync("CountyP", newBase);
+
+    } catch (error) {
+        console.log (error);
+    };
+}   
+      
+      
+      
+      
 <body>
+
 Population Data <span id='geo-display'></span><br>
 my special note: <span id='myNote'></span>
-<script>
+<br><br>
+    
+<tableau-viz
+  id="tableauViz"
+  src="https://tableau.vdl.iastate.edu/#/site/COMXT/views/countyWidget/Dashboard1" toolbar="hidden" hide-tabs>
+  <viz-filter field="County Name" value="Boone,Polk,Lyon"></viz-filter>
+  <custom-parameter name=":tooltip" value="no"></custom-parameter>
+		
+<viz-parameter name="CountyP" value="Boone"></viz-parameter>
+		
+</tableau-viz>
+	
+    
+    
+    
+        <div id="main" >
+      <tableau-viz
+        id="tableauViz"
+        src="https://tableau.vdl.iastate.edu/#/site/COMXT/views/countyWidget/Dashboard1"
+        toolbar="hidden" hide-tabs>
+    </tableau-viz>
+    </div>
+    
+    
+	
+    <script>
 $(document).ready(function() {
  $("#geo-display").text("Geo Value: " + geoValue);
 });
 </script>
-
-</body>
+    
+  </body>
 </html>
