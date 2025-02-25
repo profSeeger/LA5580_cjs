@@ -125,12 +125,12 @@
         e.preventDefault(); // Prevent the default link behavior
 
         var filePart = $(this).data("file"); // Get the filename
-        var geoData = $(this).data("geo"); // Get the geographic location
+        var geoPart = $(this).data("geo"); // Get the geographic location
         
-        loadPage(filePart, geoData);
+        loadPage(filePart, geoPart);
     });
 
-    function loadPage(filename, geo) {
+    function loadPage(filename, geoData) {
         var filePath = filename + ".html?geo="+geoData; // Construct the file path
         console.log("Opening file:", filePath);
 		
