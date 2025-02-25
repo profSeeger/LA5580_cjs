@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get URL Parameters</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
 <body>
 
-<h1>My First Heading</h1>
+<script>
+    $(document).ready(function() {
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Get the value of the 'geo' parameter
+        const geoValue = urlParams.get('geo');
 
-<p>My first paragraph.</p>
+        // Log it to the console or use it in your code
+        console.log(geoValue); // Outputs: Iowa
+
+        // You can also display it on the page
+        $('body').append(`<p>Geo Value: ${geoValue}</p>`);
+    });
+</script>
 
 </body>
 </html>
