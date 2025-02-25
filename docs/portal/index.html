@@ -74,7 +74,8 @@
         <li>Population & Demographics
           <ul>
 			    <li><a href="#" data-file="pop">Page 1</a></li>
-            <li><a href="#" id="currentPopulationLink">Current Population</a></li>
+              <li><a href="#" data-file="pop">Page 1</a></li>
+            <li><a href="#" data-file="Pop", data-geo="State">Current Population</a></li>
             <li><a href="#">Population Pyramids</a></li>
             <li><a href="#">Population Trends</a></li>
           </ul>
@@ -126,12 +127,14 @@
     $("#sidebarMenu a").on("click", function(e) {
         e.preventDefault(); // Prevent the default link behavior
 
-        var filePart = $(this).data("file"); // Get the value from data-file attribute
-        loadPage(filePart);
+        var filePart = $(this).data("file"); // Get the filename
+        var geoData = $(this).data("geo"); // Get the geographic location
+        
+        loadPage(filePart, geoData);
     });
 
-    function loadPage(filename) {
-        var filePath = filename + ".html"; // Construct the file path
+    function loadPage(filename, geo) {
+        var filePath = filename + ".html?geo="+geo; // Construct the file path
         console.log("Opening file:", filePath);
 		
 		filePath = "pop.html"
