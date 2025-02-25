@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get URL Parameters</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+Language Adult <span id='geo-display'></span>
+<script>
+$(document).ready(function() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let geoValue = urlParams.get("geo"); // Extract 'geo' parameter
+
+    if (geoValue) {
+        $("#geo-display").text("Geo Value: " + geoValue);
+    } else {
+        $("#geo-display").text("No Geo Parameter Found.");
+    }
+});
+</script>
+
+</body>
+</html>
