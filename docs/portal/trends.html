@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get URL Parameters</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+Population Trend Data <span id='GeoSpan'></span>
+<script>
+    $(document).ready(function() {
+        let url = new URL(document.location.href);
+        let params = new URLSearchParams(url.search);
+        let geoValue = params.get('geo');
+
+        console.log(geoValue); // Should output "Iowa"
+        $("body").append(`<p>Geo Value: ${geoValue}</p>`);
+    });
+</script>
+
+</body>
+</html>
