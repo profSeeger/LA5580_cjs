@@ -8,10 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	
 	<script>
-		window.geoValue = "Boone";
+		//window.geoValue = "Boone";
 		
 $(document).ready(function() {	
         $("#geo-display").text("Geo Value: " + geoValue);
+    $("#myNote").text(notes);
 });
 </script>
 
@@ -42,8 +43,8 @@ viz.appendChild(vizParameter);
 </head>
 
 <body>
-		Population is for <span id='geo-display'></span><br>
-    my special note: <span id='myNote'></span><br>
+		Population is for: <span id='geo-display'></span><br>
+    My special note: <span id='myNote'></span><br>
 	
     <div style="width:800px; height:700px;">
         <!-- Placeholder for the Tableau visualization. -->
