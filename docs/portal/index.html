@@ -67,9 +67,19 @@
   </style>
 </head>
 <body>
-   <div id="header">Indicators Portal Demo Version 8</div>
+   <div id="header">Indicators Portal Demo Version 10</div>
   <div id="container">
     <nav id="sidebarMenu">
+<ul><form id="geography">
+	  <li><input type="radio" name="geoRadio" value="National">National</li>
+	   <li><input type="radio" name="geoRadio" value="State" checked>State</li>
+	   <li><input type="radio" name="geoRadio" value="County">County</li>
+	 <li><input type="radio" name="geoRadio" value="Story">County</li>
+	 <li><input type="radio" name="geoRadio" value="Polk">County</li>
+	</form>
+</ul>
+		
+		
       <ul>
         <li>Population & Demographics
           <ul>
@@ -122,17 +132,24 @@
   </footer>
   
   <script>
-
+window.geoValue = "State";
 
 
         $(document).ready(function() {
-            notes = "hello Chris";
+            notes = "hello Chris!!!";
+			$('#geography').change(function(){
+geoValue = $("input[name='geoRadio']:checked").val();
+});
+			
+			
+			
+			
             
     $("#sidebarMenu a").on("click", function(e) {
         e.preventDefault(); // Prevent default link behavior
 
         let pageUrl = $(this).data("file"); // Get the file name from data-file
-       geoValue = $(this).data("geo"); // Get the geo parameter from data-geo
+      // geoValue = $(this).data("geo"); // Get the geo parameter from data-geo
 
         if (!pageUrl) return; // Exit if no file is defined
 
