@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-Pyramid data
+Pyramid data  <span id='GeoSpan'></span>
 <script>
     $(document).ready(function() {
         // Get the URL parameters
@@ -18,6 +18,7 @@ Pyramid data
 
         // Log it to the console or use it in your code
         console.log(geoValue); // Outputs: Iowa
+        $('#GeoSpan').text("Geo: "+geoValue)
 
         // You can also display it on the page
         $('body').append(`<p>Geo Value: ${geoValue}</p>`);
