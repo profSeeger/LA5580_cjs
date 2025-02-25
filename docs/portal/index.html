@@ -73,9 +73,8 @@
       <ul>
         <li>Population & Demographics
           <ul>
-			    <li><a href="#" data-file="pop">Page 1</a></li>
-              <li><a href="#" data-file="pop">Page 1</a></li>
-            <li><a href="#" data-file="Pop", data-geo="State">Current Population</a></li>
+			   <li><a href="#" data-file="pop", data-geo="County">Current Population</a></li>
+            <li><a href="#" data-file="pyramid", data-geo="State">Current Population</a></li>
             <li><a href="#">Population Pyramids</a></li>
             <li><a href="#">Population Trends</a></li>
           </ul>
@@ -84,7 +83,6 @@
           <ul>
             <li><a href="#">Adult</a></li>
             <li><a href="#">School</a></li>
-			  <li><a href="#" onclick="javascript:$('#mainContent').load('newpage1.html');">demo</a></li>
           </ul>
         </li>
         <li>Age
@@ -137,7 +135,7 @@
         var filePath = filename + ".html?geo="+geo; // Construct the file path
         console.log("Opening file:", filePath);
 		
-		filePath = "pop.html"
+		//filePath = "pop.html"
 		$("#mainContent").load(filePath, function(response, status, xhr) 
                                
                                {
