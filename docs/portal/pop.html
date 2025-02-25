@@ -7,19 +7,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-Population Data <span id='geo-display'></span>
+Population Data <span id='geo-display'></span><br>
     my notes <span id='myNote'></span>
 <script>
 $(document).ready(function() {
-    let urlParams = new URLSearchParams(window.location.search);
-    let geoValue = urlParams.get("geo"); // Extract 'geo' parameter
-
-    $("#myNote").text(notes);
-    if (geoValue) {
-        $("#geo-display").text("Geo Value: " + geoValue);
-    } else {
-        $("#geo-display").text("No Geo Parameter Found.");
-    }
+ $("#geo-display").text("Geo Value: " + geoValue);
 });
 </script>
 
